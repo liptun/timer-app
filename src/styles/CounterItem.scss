@@ -8,27 +8,90 @@
     overflow: hidden;
     max-height: 0;
     margin-bottom: 0;
-    &--show {
+    position: relative;
+    &.show {
         transform: scale(1);
         opacity: 1;
         max-height: 300px;
-        margin-bottom: 30px;
+        margin-bottom: 2vw;
     }
-    &__remove {
-        background: none;
-        border: 0;
-        color: white;
-        font-size: 2em;
-        font-weight: 700;
-        font-family: $font-primary;
-        line-height: 1;
-        cursor: pointer;
-        opacity: 0.5;
-        &:hover {
-            opacity: 1;
+    .controls {
+        display: grid;
+        grid-gap: 0.1em;
+        justify-content: flex-end;
+        grid-auto-flow: column;
+        button {
+            background: none;
+            border: 0;
+            color: white;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            opacity: 0.5;
+            &:hover {
+                opacity: 1;
+            }
+            &:focus {
+                outline: none;
+            }
         }
-        &:focus {
-            outline: none;
+    }
+    .counter-label {
+        text-align: center;
+        font-size: 2em;
+        input {
+            background: none;
+            border: 0;
+            font-weight: 500;
+            padding: 0;
+            font-size: 1em;
+            font-family: $font-primary;
+            text-align: center;
+            line-height: 1;
+            color: white;
+            &:focus {
+                outline: 0;
+                color: $color-primary;
+            }
+        }
+    }
+    .display {
+        display: grid;
+        grid-gap: 0.1em;
+        grid-auto-flow: column;
+        user-select: none;
+        .part {
+            &.days {
+            }
+            &.hours {
+            }
+            &.minutes {
+            }
+            &.seconds {
+            }
+            &.micro {
+            }
+        }
+        .part-label {
+            text-align: center;
+            font-weight: 700;
+            color: $color-primary;
+        }
+        .digits {
+            display: grid;
+            grid-gap: 0.051m;
+            grid-auto-flow: column;
+        }
+        .digit,
+        .separator {
+            font-size: 3.6em;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .digit {
+        }
+        .separator {
+            color: $color-primary;
         }
     }
 }

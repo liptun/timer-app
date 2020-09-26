@@ -11,6 +11,7 @@ const Header = () => (
             <p>Count time like a pro</p>
         </div>
         <div className="header__menu">
+            <p>More about author:</p>
             <a href="https://github.com/liptun" target="_blank" rel="noopener">
                 GitHub
             </a>

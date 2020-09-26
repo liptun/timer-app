@@ -23,15 +23,19 @@
         p {
             @include gradient-text;
             font-weight: 700;
+            font-size: 1.8em;
         }
     }
     &__menu {
         display: grid;
         grid-auto-flow: column;
         grid-gap: 1em;
+        p {
+        }
         a {
             color: white;
             text-decoration: none;
+            font-weight: 700;
             &:hover {
                 text-decoration: underline;
             }

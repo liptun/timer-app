@@ -4,7 +4,6 @@ import AppView from './AppView'
 import appReducer from '../reducer'
 
 const appInitialState = {
-    title: 'React useContext with useReducer',
     counters: [],
 }
 
