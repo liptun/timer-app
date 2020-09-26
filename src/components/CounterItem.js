@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import AppContext from '../context'
 import { removeCounter, renameCounter } from '../actions'
 import dayjs from 'dayjs'
+import CounterFragment from './CounterFragment'
 import '../styles/CounterItem.scss'
 
 const CounterItem = ({ counter } = {}) => {
@@ -10,6 +11,10 @@ const CounterItem = ({ counter } = {}) => {
     const { uuid, name } = counter
     const [counterLabel, setCounterLabel] = useState(name)
     const [showCounter, setShowCounter] = useState(false)
+    const [showDays, setShowDays] = useState(false)
+    const [showMicro, setShowMicro] = useState(true)
+    const [fromDate, setFromDate] = useState(dayjs())
+    const [currentDate, setCurrentDate] = useState(dayjs())
 
     const onRemoveHandle = () => {
         setShowCounter(false)
@@ -20,11 +25,14 @@ const CounterItem = ({ counter } = {}) => {
 
     useEffect(() => {
         setShowCounter(true)
+        setInterval(() => {
+            setCurrentDate(dayjs())
+        }, 10)
     }, [])
 
-    useEffect(() => {
-        console.log('save', counterLabel)
-    }, [counterLabel])
+    // useEffect(() => {
+    //     console.log('save', counterLabel)
+    // }, [counterLabel])
 
     return (
         <div
@@ -33,6 +41,9 @@ const CounterItem = ({ counter } = {}) => {
                 show: showCounter,
             })}
         >
+            <div className="bg">
+                <i className="ico ico-timer" />
+            </div>
             <div className="controls">
                 <button>
                     <i className="ico ico-label" />
@@ -54,58 +65,39 @@ const CounterItem = ({ counter } = {}) => {
                 />
             </div>
             <div className="display">
-                <div className="part days">
-                    <div className="digits">
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                    </div>
-                    <div className="part-label">
-                        <p>days</p>
-                    </div>
-                </div>
-
-                <div className="separator">-</div>
-                <div className="part hours">
-                    <div className="digits">
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                    </div>
-                    <div className="part-label">
-                        <p>hours</p>
-                    </div>
-                </div>
-                <div className="separator">:</div>
-                <div className="part minutes">
-                    <div className="digits">
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                    </div>
-                    <div className="part-label">
-                        <p>minutes</p>
-                    </div>
-                </div>
-                <div className="separator">:</div>
-                <div className="part seconds">
-                    <div className="digits">
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                    </div>
-                    <div className="part-label">
-                        <p>seconds</p>
-                    </div>
-                </div>
-                <div className="separator">.</div>
-                <div className="part micro">
-                    <div className="digits">
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                        <div className="digit">0</div>
-                    </div>
-                    <div className="part-label">
-                        <p>micro</p>
-                    </div>
-                </div>
+                {showDays && (
+                    <CounterFragment
+                        value={0}
+                        digits={3}
+                        label="days"
+                        after="-"
+                    />
+                )}
+                <CounterFragment
+                    value={currentDate.format('H')}
+                    digits={2}
+                    label="hours"
+                    after=":"
+                />
+                <CounterFragment
+                    value={currentDate.format('m')}
+                    digits={2}
+                    label="minutes"
+                    after=":"
+                />
+                <CounterFragment
+                    value={currentDate.format('s')}
+                    digits={2}
+                    label="seconds"
+                />
+                {showMicro && (
+                    <CounterFragment
+                        value={currentDate.format('SSS')}
+                        digits={3}
+                        label="micro"
+                        before="."
+                    />
+                )}
             </div>
         </div>
     )

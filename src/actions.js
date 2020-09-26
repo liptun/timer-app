@@ -4,13 +4,15 @@ export const addCounter = () => ({
     type: 'ADD_COUNTER',
     item: {
         uuid: uuid(),
-        name: 'Timer',
+        name: 'Clock',
     },
 })
+
 export const removeCounter = (uuid) => ({
     type: 'REMOVE_COUNTER',
     uuid,
 })
+
 export const renameCounter = (uuid, name) => ({
     type: 'RENAME_COUNTER',
     uuid,

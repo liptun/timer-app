@@ -9,11 +9,28 @@
     max-height: 0;
     margin-bottom: 0;
     position: relative;
+    padding: 1vw 2vw;
     &.show {
         transform: scale(1);
         opacity: 1;
         max-height: 300px;
         margin-bottom: 2vw;
+    }
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotateZ(30deg);
+        transform-origin: left top;
+        i {
+            position: relative;
+            left: 1.4vw;
+            top: -2.5vw;
+            font-size: 8em;
+            opacity: 0.05;
+        }
     }
     .controls {
         display: grid;
@@ -60,38 +77,5 @@
         grid-gap: 0.1em;
         grid-auto-flow: column;
         user-select: none;
-        .part {
-            &.days {
-            }
-            &.hours {
-            }
-            &.minutes {
-            }
-            &.seconds {
-            }
-            &.micro {
-            }
-        }
-        .part-label {
-            text-align: center;
-            font-weight: 700;
-            color: $color-primary;
-        }
-        .digits {
-            display: grid;
-            grid-gap: 0.051m;
-            grid-auto-flow: column;
-        }
-        .digit,
-        .separator {
-            font-size: 3.6em;
-            font-weight: 800;
-            line-height: 1;
-        }
-        .digit {
-        }
-        .separator {
-            color: $color-primary;
-        }
     }
 }

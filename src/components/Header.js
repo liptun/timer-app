@@ -4,7 +4,7 @@ import '../styles/Header.scss'
 const Header = () => (
     <header className="header">
         <div className="header__brand">
-            <i className="ico ico-timer"></i>
+            <i className="ico ico-timer" />
             <h1>Time 101</h1>
         </div>
         <div className="header__motto">

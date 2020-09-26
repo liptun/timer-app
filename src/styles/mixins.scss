@@ -1,7 +1,7 @@
 @import './variables.scss';
 
-@mixin gradient-text {
-    background: linear-gradient(120deg, $color-primary, $color-secondary);
+@mixin gradient-text($deg: 120deg) {
+    background: linear-gradient($deg, $color-primary, $color-secondary);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
