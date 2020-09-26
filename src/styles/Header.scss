@@ -1,0 +1,40 @@
+@import './mixins.scss';
+
+.header {
+    padding: 1vw 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__brand {
+        display: flex;
+        align-items: center;
+        font-size: 1.4em;
+        i {
+            @include gradient-text;
+            font-size: 1.4em;
+        }
+        h1 {
+            font-weight: 800;
+            margin-left: 0.4em;
+            margin-bottom: -0.1em;
+        }
+    }
+    &__motto {
+        p {
+            @include gradient-text;
+            font-weight: 700;
+        }
+    }
+    &__menu {
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 1em;
+        a {
+            color: white;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

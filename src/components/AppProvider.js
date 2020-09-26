@@ -1,21 +1,11 @@
 import React, { useReducer } from 'react'
 import AppContext from '../context'
 import AppView from './AppView'
+import appReducer from '../reducer'
 
-const appReducer = (state, action) => {
-    switch (action.type) {
-        case 'ADD_ITEM':
-            return {
-                ...state,
-                items: [...state.items, action.item],
-            }
-        default:
-            return { ...state }
-    }
-}
 const appInitialState = {
     title: 'React useContext with useReducer',
-    items: [],
+    counters: [],
 }
 
 const AppProvider = () => {

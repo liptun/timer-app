@@ -1,0 +1,35 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.counter-add {
+    display: flex;
+    justify-content: center;
+    button {
+        display: flex;
+        align-items: center;
+        font-family: $font-primary;
+        border: 0;
+        font-size: 2em;
+        background: none;
+        color: white;
+        cursor: pointer;
+        opacity: 0.4;
+        &:focus {
+            outline: none;
+        }
+        &:hover {
+            opacity: 1;
+            i {
+                transform: scale(1);
+                transition: all 0.4s cubic-bezier(0.55, 0.33, 0.39, 1.86);
+            }
+        }
+        i {
+            @include gradient-text;
+            margin-top: -0.2vw;
+            margin-right: 0.6vw;
+            transform: scale(0.7);
+            transition: all 0.4s ease-out;
+        }
+    }
+}

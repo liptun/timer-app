@@ -1,31 +1,23 @@
 import React, { useContext, useEffect } from 'react'
 import AppContext from '../context'
-import { v4 as uuid } from 'uuid'
+import { addCounter } from '../actions'
+import Header from './Header'
+import Counters from './Counters'
+import CounterAdd from './CounterAdd'
 import '../styles/App.scss'
 
 const AppView = () => {
-    const { appState, dispatch } = useContext(AppContext)
+    const { dispatch } = useContext(AppContext)
 
     useEffect(() => {
-        dispatch({
-            type: 'ADD_ITEM',
-            item: {
-                id: uuid(),
-                text: 'Lorem ipsum',
-            },
-        })
+        dispatch(addCounter())
     }, [])
 
     return (
         <div className="app">
-            <div className="app__content">
-                <i className="ico ico-react" />
-                <h1>{appState.title}</h1>
-                <p>{uuid()}</p>
-                {appState.items.map((item) => (
-                    <p key={item.id}>{item.text}</p>
-                ))}
-            </div>
+            <Header />
+            <CounterAdd />
+            <Counters />
         </div>
     )
 }
