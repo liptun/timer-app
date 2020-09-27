@@ -6,6 +6,9 @@ html {
     font-family: $font-primary;
     font-size: 1vw;
     line-height: 1;
+    @media (max-width: 700px) {
+        font-size: 16px;
+    }
 }
 
 ::selection {

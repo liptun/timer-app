@@ -9,9 +9,9 @@ import '../styles/App.scss'
 const AppView = () => {
     const { dispatch } = useContext(AppContext)
 
-    useEffect(() => {
-        dispatch(addCounter())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(addCounter())
+    // }, [])
 
     return (
         <div className="app">

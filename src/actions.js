@@ -1,5 +1,10 @@
 import { v4 as uuid } from 'uuid'
 
+export const seedState = (state) => ({
+    type: 'SEED_STATE',
+    state,
+})
+
 export const addCounter = () => ({
     type: 'ADD_COUNTER',
     item: {

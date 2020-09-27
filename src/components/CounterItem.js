@@ -13,6 +13,7 @@ const CounterItem = ({ counter } = {}) => {
     const [showCounter, setShowCounter] = useState(false)
     const [showDays, setShowDays] = useState(false)
     const [showMicro, setShowMicro] = useState(true)
+    const [showConfig, setShowConfig] = useState(true)
     const [fromDate, setFromDate] = useState(dayjs())
     const [currentDate, setCurrentDate] = useState(dayjs())
 
@@ -25,14 +26,17 @@ const CounterItem = ({ counter } = {}) => {
 
     useEffect(() => {
         setShowCounter(true)
-        setInterval(() => {
+        const tick = setInterval(() => {
             setCurrentDate(dayjs())
         }, 10)
+        return () => {
+            clearInterval(tick)
+        }
     }, [])
 
-    // useEffect(() => {
-    //     console.log('save', counterLabel)
-    // }, [counterLabel])
+    useEffect(() => {
+        dispatch(renameCounter(uuid, counterLabel))
+    }, [counterLabel])
 
     return (
         <div
@@ -41,15 +45,12 @@ const CounterItem = ({ counter } = {}) => {
                 show: showCounter,
             })}
         >
-            <div className="bg">
-                <i className="ico ico-timer" />
-            </div>
             <div className="controls">
                 <button>
-                    <i className="ico ico-label" />
-                </button>
-                <button>
-                    <i className="ico ico-edit" />
+                    <i
+                        className="ico ico-settings"
+                        onClick={() => setShowConfig(!showConfig)}
+                    />
                 </button>
                 <button className="remove" onClick={onRemoveHandle}>
                     <i className="ico ico-close" />
@@ -64,6 +65,7 @@ const CounterItem = ({ counter } = {}) => {
                     spellCheck="false"
                 />
             </div>
+            {showConfig && <p>Show config</p>}
             <div className="display">
                 {showDays && (
                     <CounterFragment
