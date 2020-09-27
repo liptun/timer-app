@@ -1,6 +1,6 @@
 const appReducer = (state, action) => {
     switch (action.type) {
-        case 'SEED_STATE':
+        case 'PUSH_STATE':
             return {
                 ...state,
                 ...action.state,

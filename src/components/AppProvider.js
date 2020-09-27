@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react'
 import AppContext from '../context'
 import AppView from './AppView'
 import appReducer from '../reducer'
-import { seedState } from '../actions'
+import { pushState } from '../actions'
 
 const appInitialState = {
     counters: [],
@@ -15,7 +15,7 @@ const AppProvider = () => {
         const storedState = localStorage.getItem('counter-app-state')
         if (storedState) {
             const jsonState = JSON.parse(storedState)
-            dispatch(seedState(jsonState))
+            dispatch(pushState(jsonState))
         }
     }, [])
 

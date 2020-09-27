@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 
-export const seedState = (state) => ({
-    type: 'SEED_STATE',
+export const pushState = (state) => ({
+    type: 'PUSH_STATE',
     state,
 })
 
