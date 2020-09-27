@@ -10,6 +10,8 @@ export const addCounter = () => ({
     item: {
         uuid: uuid(),
         name: 'Clock',
+        start: true,
+        type: 'clock',
     },
 })
 

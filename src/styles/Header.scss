@@ -2,8 +2,8 @@
 
 .header {
     padding: 1vw 2vw;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     &__brand {
         display: flex;
@@ -20,6 +20,8 @@
         }
     }
     &__motto {
+        display: flex;
+        justify-content: center;
         p {
             @include gradient-text;
             font-weight: 700;
@@ -28,10 +30,9 @@
     }
     &__menu {
         display: grid;
+        justify-content: flex-end;
         grid-auto-flow: column;
         grid-gap: 1em;
-        p {
-        }
         a {
             color: white;
             text-decoration: none;
